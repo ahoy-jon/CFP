@@ -10,7 +10,9 @@ object ApplicationBuild extends Build {
   val appDependencies = Seq(
 
     "securesocial" %% "securesocial" % "master-SNAPSHOT",
-    // Add your project dependencies here,
+    "com.novus" %% "salat" % "1.9.2-SNAPSHOT",
+
+      // Add your project dependencies here,
     jdbc,
     anorm
   )
