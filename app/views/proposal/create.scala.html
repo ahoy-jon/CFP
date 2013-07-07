@@ -1,6 +1,8 @@
-@(form:Form[ProposalController.CreationProposalPayLoad])
+@(creationForm:Form[ProposalController.CreationProposalPayLoad])
 
+@import helper._
 
+@implicitFieldConstructor = @{ FieldConstructor(securesocial.views.html.inputFieldConstructor.f) }
 
 
 
@@ -11,11 +13,13 @@
 
 @helper.form(action = routes.ProposalController.handleCreate) {
 
-    @helper.inputText(form("title"))
-    @helper.textarea(form("contentAbstract"))
-    @helper.textarea(form("body"))
-    @helper.textarea(form("comments"))
+<fieldset>
+    @helper.inputText(creationForm("title"))
+    @helper.textarea(creationForm("contentAbstract"))
+    @helper.textarea(creationForm("body"))
+    @helper.textarea(creationForm("comments"))
 
+    </fieldset>
 
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">
