@@ -1,0 +1,27 @@
+@(form:Form[ProposalController.CreationProposalPayLoad])
+
+
+
+
+
+@main("create proposal") {
+
+
+
+
+@helper.form(action = routes.ProposalController.handleCreate) {
+
+    @helper.inputText(form("title"))
+    @helper.textarea(form("contentAbstract"))
+    @helper.textarea(form("body"))
+    @helper.textarea(form("comments"))
+
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">
+        Create Product
+      </button>
+</div> }
+
+
+}

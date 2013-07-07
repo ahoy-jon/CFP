@@ -3,12 +3,13 @@ package controllers
 import play.api.mvc.Controller
 import securesocial.core.SecureSocial
 import play.api.data
+import play.api.data.Form
 
 
 object ProposalController extends SecureSocial {
 
 
-  val Title = "email"
+  val Title = "title"
   val ContentAbstract = "contentAbstract"
   val Body = "body"
   val Comments = "comments"
@@ -16,7 +17,7 @@ object ProposalController extends SecureSocial {
 
   case class CreationProposalPayLoad(title:String, contentAbstract:String, body:String, comments:Option[String])
 
-  val createProposalForm = {
+  val createProposalForm:Form[CreationProposalPayLoad] = {
     import play.api.data.Form
     import play.api.data.Forms._
 
@@ -31,8 +32,26 @@ object ProposalController extends SecureSocial {
   }
 
   def create = SecuredAction( f => {
-       Ok("ALLLLLLLO")
+       Ok(views.html.proposal.create(createProposalForm))
 
   })
 
+
+  def handleCreate = SecuredAction( f => {
+
+
+    implicit val request  = f.request
+    createProposalForm.bindFromRequest.fold(
+        errors => BadRequest(views.html.proposal.create(errors)),
+
+        createProposalPayLoad => {
+
+          Ok("Created")
+        }
+
+
+    )
+  })
 }
+
+

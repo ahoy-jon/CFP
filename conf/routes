@@ -8,6 +8,7 @@ GET     /                           controllers.Application.index
 
 
 GET     /create                     controllers.ProposalController.create
+POST    /create                     controllers.ProposalController.handleCreate
 
 # Login page
 GET     /login                      securesocial.controllers.LoginPage.login
